@@ -7,4 +7,4 @@ ADD target/*.jar target/*.jar
 # expose port
 EXPOSE 9090
 # specify default command
-CMD java -jar target/*.jar
+CMD ["java","-jar","target/*.jar"]
