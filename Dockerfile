@@ -1,6 +1,10 @@
 # Base Alpine Linux based image with OpenJDK JRE only
 FROM openjdk:8-jre-alpine
-# copy application JAR (with libraries inside)
-COPY target/*.jar /app.jar
+# set working directory
+WORKDIR /
+# add application JAR (with libraries inside)
+ADD target/*.jar target/*.jar
+# expose port
+EXPOSE 9090
 # specify default command
-CMD ["/usr/bin/java", "-jar", "/app.jar"]
+CMD java -jar target/*.jar
