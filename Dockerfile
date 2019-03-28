@@ -5,6 +5,6 @@ WORKDIR /
 # add application JAR (with libraries inside)
 ADD target/*.jar target/*.jar
 # expose port
-EXPOSE 9966
+EXPOSE 3306
 # specify default command
 CMD ["java","-jar","target/*.jar"]
