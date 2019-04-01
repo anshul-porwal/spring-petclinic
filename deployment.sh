@@ -3,7 +3,7 @@
 # 
 
 dockerfile="Dockerfile"
-imageName="Petclinic-Dev"
+imageName="petclinic-dev"
 imageTag="${BUILD_NUMBER}"
 
 #
