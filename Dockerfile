@@ -5,6 +5,6 @@ WORKDIR /app
 # add application JAR (with libraries inside)
 ADD target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar /app
 # expose port
-EXPOSE 8080
+EXPOSE 9090
 # specify default command
-CMD ["java","-jar","spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar"]
+CMD ["java","-jar","spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar","--server.port=9090"]
