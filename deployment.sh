@@ -16,7 +16,7 @@ imageURL="${imageRepository}/${imageName}:${imageTag}"
 localImage="${USER}/${imageName}:${imageTag}"
 
 #
-# deployment steps
+# steps to deploy
 #
 echo "remove any local images ..."
 docker rmi -f ${imageURL} ${USER}/${imageName}:${imageTag}
