@@ -46,7 +46,7 @@
 	# Update the service with the new task definition and desired count
 	TASK_REVISION=`~/.local/bin/aws ecs describe-task-definition --task-definition Test | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
 	DESIRED_COUNT=`~/.local/bin/aws ecs describe-services --services ${serviceName} | egrep "desiredCount" | tr "/" " " | awk '{print $2}' | sed 's/,$//'`
-	if [ ${DESIRED_COUNT} = "0" ]; then
+	if [ ${DESIRED_COUNT} == "0" ]; then
     DESIRED_COUNT="1"
 	fi
 	~/.local/bin/aws ecs update-service --cluster ${clusterName} --service ${serviceName} --task-definition ${taskDefination}:${TASK_REVISION} --desired-count ${DESIRED_COUNT}
