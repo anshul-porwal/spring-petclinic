@@ -41,14 +41,14 @@
 
 	# Create a new task definition for this build
 	sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" Test.json > test-v_${BUILD_NUMBER}.json
-	aws ecs register-task-definition --family Test --cli-input-json file://test-v_${BUILD_NUMBER}.json
+	~/.local/bin/aws ecs register-task-definition --family Test --cli-input-json file://test-v_${BUILD_NUMBER}.json
 
 	# Update the service with the new task definition and desired count
-	TASK_REVISION=`aws ecs describe-task-definition --task-definition Test | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
-	DESIRED_COUNT=`aws ecs describe-services --services ${serviceName} | egrep "desiredCount" | tr "/" " " | awk '{print $2}' | sed 's/,$//'`
+	TASK_REVISION=`~/.local/bin/aws ecs describe-task-definition --task-definition Test | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
+	DESIRED_COUNT=`~/.local/bin/aws ecs describe-services --services ${serviceName} | egrep "desiredCount" | tr "/" " " | awk '{print $2}' | sed 's/,$//'`
 	if [ ${DESIRED_COUNT} = "0" ]; then
     DESIRED_COUNT="1"
 	fi
-	aws ecs update-service --cluster ${clusterName} --service ${serviceName} --task-definition ${taskDefination}:${TASK_REVISION} --desired-count ${DESIRED_COUNT}
+	~/.local/bin/aws ecs update-service --cluster ${clusterName} --service ${serviceName} --task-definition ${taskDefination}:${TASK_REVISION} --desired-count ${DESIRED_COUNT}
 
 
