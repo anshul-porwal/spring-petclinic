@@ -4,7 +4,7 @@
 	dockerfile="Dockerfile"
 	imageName="petclinic-dev"
 	imageTag="${BUILD_NUMBER}"
-	clusterName=”Test”
+	clusterName="Test"
 	serviceName="Test"
 	IMAGE_VERSION="v_"${BUILD_NUMBER}
 	taskDefination="Test"
