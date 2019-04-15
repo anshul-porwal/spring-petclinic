@@ -40,7 +40,7 @@
 	&& docker push ${imageURL}
 
 	# Create a new task definition for this build
-	sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" test.json > test-v_${BUILD_NUMBER}.json
+	sed -e "s;%BUILD_NUMBER%;${BUILD_NUMBER};g" Test.json > test-v_${BUILD_NUMBER}.json
 	aws ecs register-task-definition --family Test --cli-input-json file://test-v_${BUILD_NUMBER}.json
 
 	# Update the service with the new task definition and desired count
